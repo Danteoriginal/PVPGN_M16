@@ -1,0 +1,170 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:656: checking host system type
+configure:677: checking target system type
+configure:695: checking build system type
+configure:722: checking for gcc
+configure:835: checking whether the C compiler (gcc  ) works
+configure:851: gcc -o conftest    conftest.c  1>&5
+configure:848:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+main(){return(0);}
+^~~~
+1 warning generated.
+configure:877: checking whether the C compiler (gcc  ) is a cross-compiler
+configure:882: checking whether we are using GNU C
+configure:910: checking whether gcc accepts -g
+configure:953: checking for a BSD compatible install
+configure:1008: checking how to run the C preprocessor
+configure:1090: checking for AIX
+configure:1114: checking for POSIXized ISC
+configure:1136: checking for minix/config.h
+configure:1377: checking whether gcc needs -traditional
+configure:1426: checking for gcc option to accept ANSI C
+configure:1504: checking for working const
+configure:1579: checking for inline
+configure:1622: checking for pow in -lm
+configure:1663: checking for compress in -lz
+configure:2310: checking for gethostbyname in -lnsl
+configure:2350: checking for socket in -lsocket
+configure:2390: checking for inet_aton in -lresolv
+configure:2430: checking for __inet_aton in -lbind
+configure:2479: checking for _libwsock32_a_iname in -lwsock32
+configure:2525: checking for dirent.h that defines DIR
+configure:2563: checking for opendir in -ldir
+configure:2646: checking for ANSI C header files
+configure:2750: checking whether time.h and sys/time.h may both be included
+configure:2785: checking whether stat file-mode macros are broken
+configure:2886: checking for fcntl.h
+configure:2886: checking for sys/time.h
+configure:2886: checking for time.h
+configure:2886: checking for sys/select.h
+configure:2886: checking for string.h
+configure:2886: checking for strings.h
+configure:2886: checking for unistd.h
+configure:2886: checking for stdarg.h
+configure:2886: checking for varargs.h
+configure:2886: checking for malloc.h
+configure:2886: checking for sys/utsname.h
+configure:2886: checking for sys/timeb.h
+configure:2886: checking for sys/socket.h
+configure:2886: checking for sys/param.h
+configure:2886: checking for netinet/in.h
+configure:2886: checking for arpa/inet.h
+configure:2886: checking for netdb.h
+configure:2886: checking for termios.h
+configure:2886: checking for stddef.h
+configure:2886: checking for memory.h
+configure:2886: checking for sys/types.h
+configure:2886: checking for sys/wait.h
+configure:2886: checking for sys/ioctl.h
+configure:2886: checking for stdint.h
+configure:2886: checking for sys/file.h
+configure:2886: checking for limits.h
+configure:2886: checking for poll.h
+configure:2886: checking for sys/poll.h
+configure:2886: checking for stropts.h
+configure:2886: checking for sys/stropts.h
+configure:2886: checking for sys/stat.h
+configure:2886: checking for pwd.h
+configure:2886: checking for grp.h
+configure:2886: checking for dir.h
+configure:2886: checking for direct.h
+configure:2886: checking for sys/mman.h
+configure:2886: checking for sys/event.h
+configure:2886: checking for sys/epoll.h
+configure:2886: checking for sys/resource.h
+configure:2886: checking for assert.h
+configure:2886: checking for sqlite3.h
+configure:2925: checking whether struct tm is in sys/time.h or time.h
+configure:2959: checking for pid_t
+configure:2992: checking return type of signal handlers
+configure:3033: checking for off_t
+configure:3066: checking for size_t
+configure:3099: checking size of unsigned char
+configure:3138: checking size of unsigned short
+configure:3177: checking size of unsigned int
+configure:3216: checking size of unsigned long
+configure:3255: checking size of unsigned long long
+configure:3294: checking size of signed char
+configure:3333: checking size of signed short
+configure:3372: checking size of signed int
+configure:3411: checking size of signed long
+configure:3450: checking size of signed long long
+configure:3494: checking for unistd.h
+configure:3533: checking for getpagesize
+configure:3586: checking for working mmap
+configure:3757: checking for strftime
+configure:3853: checking for vprintf
+configure:3958: checking whether closedir returns void
+configure:3997: checking for mkdir
+configure:3997: checking for _mkdir
+configure:4050: checking whether mkdir takes one argument
+configure:4103: checking for gethostname
+configure:4103: checking for gettimeofday
+configure:4103: checking for select
+configure:4103: checking for socket
+configure:4103: checking for strdup
+configure:4103: checking for strtoul
+configure:4103: checking for strerror
+configure:4103: checking for inet_aton
+configure:4103: checking for inet_ntoa
+configure:4103: checking for uname
+configure:4103: checking for recv
+configure:4103: checking for send
+configure:4103: checking for recvfrom
+configure:4103: checking for sendto
+configure:4103: checking for uname
+configure:4103: checking for fork
+configure:4103: checking for getpid
+configure:4103: checking for sigaction
+configure:4103: checking for sigprocmask
+configure:4103: checking for sigaddset
+configure:4103: checking for setpgid
+configure:4103: checking for setpgrp
+configure:4103: checking for ftime
+configure:4103: checking for strcasecmp
+configure:4103: checking for strncasecmp
+configure:4103: checking for stricmp
+configure:4103: checking for strnicmp
+configure:4103: checking for chdir
+configure:4103: checking for difftime
+configure:4103: checking for strchr
+configure:4103: checking for strrchr
+configure:4103: checking for index
+configure:4103: checking for rindex
+configure:4103: checking for memcpy
+configure:4103: checking for memset
+configure:4103: checking for memmove
+configure:4103: checking for bcopy
+configure:4103: checking for wait
+configure:4103: checking for waitpid
+configure:4103: checking for pipe
+configure:4103: checking for getenv
+configure:4103: checking for ioctl
+configure:4103: checking for setsid
+configure:4103: checking for mktime
+configure:4103: checking for poll
+configure:4103: checking for gethostbyname
+configure:4103: checking for getservbyname
+configure:4103: checking for getlogin
+configure:4103: checking for pow
+configure:4103: checking for getpwnam
+configure:4103: checking for getgrnam
+configure:4103: checking for getuid
+configure:4103: checking for getgid
+configure:4103: checking for setuid
+configure:4103: checking for setgid
+configure:4103: checking for mkdir
+configure:4103: checking for _mkdir
+configure:4103: checking for strsep
+configure:4103: checking for getopt
+configure:4103: checking for kqueue
+configure:4103: checking for setitimer
+configure:4103: checking for epoll_create
+configure:4103: checking for getrlimit
+configure:4103: checking for vsnprintf
+configure:4103: checking for _vsnprintf
+configure:4103: checking for snprintf
+configure:4103: checking for _snprintf
+configure:4157: checking whether setpgrp takes no argument
