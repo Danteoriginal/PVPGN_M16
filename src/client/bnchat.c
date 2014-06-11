@@ -266,7 +266,7 @@ static char const * mode_get_prompt(t_mode mode)
     switch (mode)
     {
     case mode_chat:
-	return "] ";
+	return "";
     case mode_command:
 	return "command> ";
     case mode_waitstat:
@@ -718,12 +718,12 @@ void munge(t_client_state * client)
 
     if (!client->munged)
     {
-	printf("\r");
+	printf("");
 	for (i=0; i<strlen(mode_get_prompt(client->mode)); i++)
 	    printf(" ");
 	for (i=0; i<strlen(client->text) && i<client->screen_width-strlen(mode_get_prompt(client->mode)); i++)
 	    printf(" ");
-	printf("\r");
+	printf("");
 	client->munged = 1;
     }
 }
@@ -908,7 +908,7 @@ extern int main(int argc, char * argv[])
 		if (handle_winch)
 		{
 		    client_get_termsize(client.fd_stdin,&client.screen_width,&client.screen_height);
-		    printf(" \r");
+		    printf(" ");
 		    client.munged = 1;
 		    handle_winch = 0;
 		}
@@ -918,7 +918,7 @@ extern int main(int argc, char * argv[])
 	    if (status<0)
 		continue;
 	    if (strchr(user.player,' ')  || strchr(user.player,'\t') ||
-		strchr(user.player,'\r') || strchr(user.player,'\n') )
+		strchr(user.player,' ') || strchr(user.player,'\n') )
 	    {
 		printf("Spaces are not allowed in usernames. Try again.\n");
 		continue;
@@ -952,7 +952,7 @@ extern int main(int argc, char * argv[])
 		if (handle_winch)
 		{
 		    client_get_termsize(client.fd_stdin,&client.screen_width,&client.screen_height);
-		    printf(" \r");
+		    printf(" ");
 		    client.munged = 1;
 		    handle_winch = 0;
 		}
@@ -978,7 +978,7 @@ extern int main(int argc, char * argv[])
 		if (handle_winch)
 		{
 		    client_get_termsize(client.fd_stdin,&client.screen_width,&client.screen_height);
-		    printf(" \r");
+		    printf(" ");
 		    client.munged = 1;
 		    handle_winch = 0;
 		}
@@ -1056,7 +1056,7 @@ extern int main(int argc, char * argv[])
 		if (handle_winch)
 		{
 		    client_get_termsize(client.fd_stdin,&client.screen_width,&client.screen_height);
-		    printf(" \r");
+		    printf(" ");
 		    client.munged = 1;
 		    handle_winch = 0;
 		}
@@ -1084,7 +1084,7 @@ extern int main(int argc, char * argv[])
 		if (handle_winch)
 		{
 		    client_get_termsize(client.fd_stdin,&client.screen_width,&client.screen_height);
-		    printf(" \r");
+		    printf(" ");
 		    client.munged = 1;
 		    handle_winch = 0;
 		}
@@ -1104,7 +1104,7 @@ extern int main(int argc, char * argv[])
 		if (handle_winch)
 		{
 		    client_get_termsize(client.fd_stdin,&client.screen_width,&client.screen_height);
-		    printf(" \r");
+		    printf(" ");
 		    client.munged = 1;
 		    handle_winch = 0;
 		}
@@ -1124,7 +1124,7 @@ extern int main(int argc, char * argv[])
 		if (handle_winch)
 		{
 		    client_get_termsize(client.fd_stdin,&client.screen_width,&client.screen_height);
-		    printf(" \r");
+		    printf(" ");
 		    client.munged = 1;
 		    handle_winch = 0;
 		}
@@ -1198,7 +1198,7 @@ extern int main(int argc, char * argv[])
 		if (handle_winch)
 		{
 		    client_get_termsize(client.fd_stdin,&client.screen_width,&client.screen_height);
-		    printf(" \r");
+		    printf(" ");
 		    client.munged = 1;
 		    handle_winch = 0;
 		}
@@ -1226,7 +1226,7 @@ extern int main(int argc, char * argv[])
 		if (handle_winch)
 		{
 		    client_get_termsize(client.fd_stdin,&client.screen_width,&client.screen_height);
-		    printf(" \r");
+		    printf(" ");
 		    client.munged = 1;
 		    handle_winch = 0;
 		}
@@ -1410,7 +1410,7 @@ extern int main(int argc, char * argv[])
 	    {
 		client_get_termsize(client.fd_stdin,&client.screen_width,&client.screen_height);
 		handle_winch = 0;
-		printf(" \r");
+		printf(" ");
 		client.munged = 1;
 	    }
 	    
@@ -1549,7 +1549,7 @@ extern int main(int argc, char * argv[])
 			    bn_int_set(&packet->u.client_startgame4.unknown5,CLIENT_STARTGAME4_UNKNOWN5);
 			    packet_append_string(packet,user.curr_gamename);
 			    packet_append_string(packet,user.curr_gamepass);
-			    packet_append_string(packet,",,,,1,3,1,3e37a84c,7,Player\rAshrigo\r");
+			    packet_append_string(packet,",,,,1,3,1,3e37a84c,7,PlayerAshrigo");
 			    client_blocksend_packet(client.sd,packet);
 			    packet_del_ref(packet);
 			    client.mode = mode_gamewait;
@@ -1679,7 +1679,7 @@ extern int main(int argc, char * argv[])
 			}
 			else
 			{
-			    ansi_printf(&client,ansi_text_color_blue,"\r<%s>",user.player);
+			    ansi_printf(&client,ansi_text_color_blue,"%s:",user.player);
 			    printf(" ");
 			    str_print_term(stdout,client.text,0,0);
 			    printf("\n");
@@ -1956,7 +1956,7 @@ extern int main(int argc, char * argv[])
 				    ansi_text_color_fore(ansi_text_color_yellow);
 				strncpy(msgtemp,temp,sizeof(msgtemp));
 				msgtemp[sizeof(msgtemp)-1] = '\0';
-				for (tok=strtok(msgtemp,"\r\n"); tok; tok=strtok(NULL,"\r\n"))
+				for (tok=strtok(msgtemp,"\n"); tok; tok=strtok(NULL,"\n"))
 				    printf("  %s\n",tok);
 				if (client.useansi)
 				    ansi_text_reset();
@@ -2053,7 +2053,7 @@ extern int main(int argc, char * argv[])
 			    default:
 			    case SERVER_MESSAGE_TYPE_TALK:
 		                munge(&client);
-				ansi_printf(&client,ansi_text_color_yellow,"<%s>",speaker);
+				ansi_printf(&client,ansi_text_color_yellow,"%s:",speaker);
 				printf(" ");
 				str_print_term(stdout,message,0,0);
 				printf("\n");
