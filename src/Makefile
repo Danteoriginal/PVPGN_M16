@@ -77,13 +77,15 @@ INSTALL_PROGRAM	= ${INSTALL}
 INSTALL_DATA	= ${INSTALL} -m 644
 INSTALL_SCRIPT	= ${INSTALL_PROGRAM}
 INSTALL_DIRS	= /usr/bin/install -c -d -m 755
+ANDROID_NDK_DIRS = /Users/GwonHyeok/Documents/android-ndk-r10c/platforms/android-21/arch-arm/usr
 
 # CC set by configure
 # CFLAGS set by configure
+
+INCLUDE = $(ANDROID_NDK_DIRS)/include
+LIB = $(ANDROID_NDK_DIRS)/lib
 CPPFLAGS	= -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -DHAVE_CONFIG_H   -DBNETD_DEFAULT_CONF_FILE=\"${confdir}/bnetd.conf\" -DD2CS_DEFAULT_CONF_FILE=\"${confdir}/d2cs.conf\" -DD2DBS_DEFAULT_CONF_FILE=\"${confdir}/d2dbs.conf\" -I"${SRC_SRCDIR}"  
-COMPILE		= arm-linux-androideabi-gcc -g -O2   ${CPPFLAGS} -fno-strict-aliasing -c
-#PREPROCESS	= gcc -E ${CPPFLAGS}
-LIB = /Users/GwonHyeok/Desktop/android-ndk-r9d/platforms/android-19/arch-arm/usr/lib
+COMPILE		= arm-linux-androideabi-gcc -g -O2   ${CPPFLAGS} -fno-strict-aliasing -c -I $(INCLUDE)
 LDFLAGS = -Wl,-rpath-link=$(LIB) -L$(LIB) -nostdlib $(LIB)/crtbegin_dynamic.o -lc
 LINK		= arm-linux-androideabi-gcc -g -O2 ${LDFLAGS}   
 LINK_LIBS	=   -lm -lz -lgcc
