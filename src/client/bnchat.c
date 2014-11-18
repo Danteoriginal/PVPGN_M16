@@ -130,7 +130,7 @@
 #define CHANNEL_BROODWARS "Brood War"
 #define CHANNEL_SHAREWARE "Starcraft Shareware"
 #define CHANNEL_DIABLORTL "Diablo Retail"
-#define CHANNEL_DIABLOSHR "Diablo Shareware" /* FIXME: is this one right? */
+#define CHANNEL_DIABLOSHR "W3" /* FIXME: is this one right? */
 #define CHANNEL_WARCIIBNE "War2BNE"
 #define CHANNEL_DIABLO2DV "Diablo II"
 #define CHANNEL_DIABLO2XP "Diablo II"
@@ -2022,29 +2022,29 @@ extern int main(int argc, char * argv[])
 				break;
 			    case SERVER_MESSAGE_TYPE_WHISPER:
 		                munge(&client);
-				ansi_printf(&client,ansi_text_color_blue,"<From: %s>",speaker);
+				ansi_printf(&client,ansi_text_color_blue,"%s 님의 귓속말:\n",speaker);
 				printf(" ");
 				str_print_term(stdout,message,0,0);
 				printf("\n");
 				break;
 			    case SERVER_MESSAGE_TYPE_WHISPERACK:
 		                munge(&client);
-				ansi_printf(&client,ansi_text_color_blue,"<To: %s>",speaker);
+				ansi_printf(&client,ansi_text_color_blue,"%s 님에게 귓속말:\n",speaker);
 				printf(" ");
 				str_print_term(stdout,message,0,0);
 				printf("\n");
 				break;
 			    case SERVER_MESSAGE_TYPE_BROADCAST:
 		                munge(&client);
-				ansi_printf(&client,ansi_text_color_yellow,"<Broadcast %s> %s\n",speaker,message);
+				ansi_printf(&client,ansi_text_color_yellow,"<Broadcast> %s\n",message);
 				break;
 			    case SERVER_MESSAGE_TYPE_ERROR:
 		                munge(&client);
-				ansi_printf(&client,ansi_text_color_red,"<Error> %s\n",message);
+				ansi_printf(&client,ansi_text_color_red,"%s\n",message);
 				break;
 			    case SERVER_MESSAGE_TYPE_INFO:
 		                munge(&client);
-				ansi_printf(&client,ansi_text_color_yellow,"<Info> %s\n",message);
+				ansi_printf(&client,ansi_text_color_cyan,"%s\n",message);
 				break;
 			    case SERVER_MESSAGE_TYPE_EMOTE:
 		                munge(&client);
@@ -2053,7 +2053,7 @@ extern int main(int argc, char * argv[])
 			    default:
 			    case SERVER_MESSAGE_TYPE_TALK:
 		                munge(&client);
-				ansi_printf(&client,ansi_text_color_yellow,"%s:",speaker);
+				ansi_printf(&client,ansi_text_color_yellow,"%s:\n",speaker);
 				printf(" ");
 				str_print_term(stdout,message,0,0);
 				printf("\n");
