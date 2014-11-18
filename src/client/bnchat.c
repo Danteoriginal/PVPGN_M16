@@ -1675,7 +1675,7 @@ extern int main(int argc, char * argv[])
 			}
 			else
 			{
-			    ansi_printf(&client,ansi_text_color_blue,"%s:\n",user.player);
+			    ansi_printf(&client,ansi_text_color_magenta,"%s:\n",user.player);
 			    str_print_term(stdout,client.text,0,0);
 			    printf("\n");
 			    client.munged = 1;
@@ -2051,7 +2051,7 @@ extern int main(int argc, char * argv[])
 			    default:
 			    case SERVER_MESSAGE_TYPE_TALK:
 		                munge(&client);
-				ansi_printf(&client,ansi_text_color_yellow,"%s:\n",speaker);
+				ansi_printf(&client,ansi_text_color_blue,"%s:\n",speaker);
 				str_print_term(stdout,message,0,0);
 				printf("\n");
 			    }
