@@ -230,8 +230,6 @@ static char const * mflags_get_str(unsigned int flags)
 	strcat(buffer,",PGL_Player");
     if (flags&MF_PGLOFFL)
 	strcat(buffer,",PGL_Official");
-    buffer[0] = '[';
-    strcat(buffer,"]");
     
     return buffer;
 }
@@ -254,8 +252,6 @@ static char const * cflags_get_str(unsigned int flags)
 	strcat(buffer,",System");
     if (flags&CF_OFFICIAL)
 	strcat(buffer,",Official");
-    buffer[0] = '[';
-    strcat(buffer,"]");
     
     return buffer;
 }
@@ -1679,8 +1675,7 @@ extern int main(int argc, char * argv[])
 			}
 			else
 			{
-			    ansi_printf(&client,ansi_text_color_blue,"%s:",user.player);
-			    printf(" ");
+			    ansi_printf(&client,ansi_text_color_blue,"%s:\n",user.player);
 			    str_print_term(stdout,client.text,0,0);
 			    printf("\n");
 			    client.munged = 1;
@@ -2000,25 +1995,28 @@ extern int main(int argc, char * argv[])
 			    {
 			    case SERVER_MESSAGE_TYPE_JOIN:
 		                munge(&client);
-				ansi_printf(&client,ansi_text_color_green,"\"%s\" %s enters\n",speaker,
+				ansi_printf(&client,ansi_text_color_green,"{ \"username\" : \"%s\", \"flag\" : \"%s\", \"action\" : \"enter\" }\n",speaker,
 				            mflags_get_str(bn_int_get(rpacket->u.server_message.flags)));
 				break;
 			    case SERVER_MESSAGE_TYPE_CHANNEL:
 		                munge(&client);
-				ansi_printf(&client,ansi_text_color_green,"Joining channel :\"%s\" %s\n",message,
+				ansi_printf(&client,ansi_text_color_green,"{ \"channel\" : \"%s\" }",message);
+				ansi_printf(&client,ansi_text_color_green,"채널입장: \"%s\" %s\n",message,
 				            cflags_get_str(bn_int_get(rpacket->u.server_message.flags)));
 				break;
 			    case SERVER_MESSAGE_TYPE_ADDUSER:
 		                munge(&client);
-				ansi_printf(&client,ansi_text_color_green,"\"%s\" %s is here\n",speaker,
+				ansi_printf(&client,ansi_text_color_green,"{ \"username\" : \"%s\", \"flag\" : \"%s\", \"action\" : \"enter\" }\n",speaker,
 				            mflags_get_str(bn_int_get(rpacket->u.server_message.flags)));
+				ansi_printf(&client,ansi_text_color_green,"%s 님이 입장하셨습니다.\n",speaker);
 				break;
 			    case SERVER_MESSAGE_TYPE_USERFLAGS:
 				break;
 			    case SERVER_MESSAGE_TYPE_PART:
 		                munge(&client);
-				ansi_printf(&client,ansi_text_color_green,"\"%s\" %s leaves\n",speaker,
+				ansi_printf(&client,ansi_text_color_green,"{ \"username\" : \"%s\", \"flag\" : \"%s\", \"action\" : \"leave\" }\n",speaker,
 				            mflags_get_str(bn_int_get(rpacket->u.server_message.flags)));
+				ansi_printf(&client,ansi_text_color_green,"%s 님이 퇴장하셨습니다.\n",speaker);
 				break;
 			    case SERVER_MESSAGE_TYPE_WHISPER:
 		                munge(&client);
@@ -2054,7 +2052,6 @@ extern int main(int argc, char * argv[])
 			    case SERVER_MESSAGE_TYPE_TALK:
 		                munge(&client);
 				ansi_printf(&client,ansi_text_color_yellow,"%s:\n",speaker);
-				printf(" ");
 				str_print_term(stdout,message,0,0);
 				printf("\n");
 			    }
