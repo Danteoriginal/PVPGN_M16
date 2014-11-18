@@ -90,7 +90,7 @@
 #define CLIENT_COUNTRYINFO_109_GAMELANG            "koKR"
 #define CLIENT_COUNTRYINFO_109_LOCALIP             0x00000000
 #define CLIENT_COUNTRYINFO_109_LANGID_USENGLISH    0x00000409
-#define CLIENT_COUNTRYINFO_109_LANGSTR_USENGLISH   "^[SugarLand^Z"
+#define CLIENT_COUNTRYINFO_109_LANGSTR_USENGLISH   "KOR"
 #define CLIENT_COUNTRYINFO_109_COUNTRYNAME_USA     "Korea"
 
 extern int client_connect(char const * progname, char const * servname, unsigned short servport, char const * cdowner, char const * cdkey, char const * clienttag, struct sockaddr_in * saddr, unsigned int * sessionkey, unsigned int * sessionnum, char const * archtag, char const * gamelang);

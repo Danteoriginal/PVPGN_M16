@@ -1978,6 +1978,11 @@ extern int main(int argc, char * argv[])
 			    char const * speaker;
 			    char const * message;
 			    
+			    char timebuf[10];
+			    time_t now = time(NULL);
+
+			    strftime(timebuf, 11, "[%H:%M:%S]", localtime(&now));
+
 			    if (!(speaker = packet_get_str_const(rpacket,sizeof(t_server_message),32)))
 			    {
 		                munge(&client);
@@ -2008,7 +2013,7 @@ extern int main(int argc, char * argv[])
 		                munge(&client);
 				ansi_printf(&client,ansi_text_color_green,"{ \"username\" : \"%s\", \"flag\" : \"%s\", \"action\" : \"enter\" }\n",speaker,
 				            mflags_get_str(bn_int_get(rpacket->u.server_message.flags)));
-				ansi_printf(&client,ansi_text_color_green,"%s 님이 입장하셨습니다.\n",speaker);
+				ansi_printf(&client,ansi_text_color_green,"%s %s님이 입장하셨습니다.\n",timebuf,speaker);
 				break;
 			    case SERVER_MESSAGE_TYPE_USERFLAGS:
 				break;
@@ -2016,18 +2021,18 @@ extern int main(int argc, char * argv[])
 		                munge(&client);
 				ansi_printf(&client,ansi_text_color_green,"{ \"username\" : \"%s\", \"flag\" : \"%s\", \"action\" : \"leave\" }\n",speaker,
 				            mflags_get_str(bn_int_get(rpacket->u.server_message.flags)));
-				ansi_printf(&client,ansi_text_color_green,"%s 님이 퇴장하셨습니다.\n",speaker);
+				ansi_printf(&client,ansi_text_color_green,"%s %s님이 퇴장하셨습니다.\n",timebuf,speaker);
 				break;
 			    case SERVER_MESSAGE_TYPE_WHISPER:
 		                munge(&client);
-				ansi_printf(&client,ansi_text_color_blue,"%s 님의 귓속말:\n",speaker);
+				ansi_printf(&client,ansi_text_color_blue,"%s %s님의 귓속말:\n",timebuf,speaker);
 				printf(" ");
 				str_print_term(stdout,message,0,0);
 				printf("\n");
 				break;
 			    case SERVER_MESSAGE_TYPE_WHISPERACK:
 		                munge(&client);
-				ansi_printf(&client,ansi_text_color_blue,"%s 님에게 귓속말:\n",speaker);
+				ansi_printf(&client,ansi_text_color_blue,"%s %s에게 귓속말:\n",timebuf,speaker);
 				printf(" ");
 				str_print_term(stdout,message,0,0);
 				printf("\n");
@@ -2051,7 +2056,7 @@ extern int main(int argc, char * argv[])
 			    default:
 			    case SERVER_MESSAGE_TYPE_TALK:
 		                munge(&client);
-				ansi_printf(&client,ansi_text_color_blue,"%s:\n",speaker);
+				ansi_printf(&client,ansi_text_color_blue,"%s %s:\n",timebuf,speaker);
 				str_print_term(stdout,message,0,0);
 				printf("\n");
 			    }
